@@ -23,15 +23,12 @@ class ChatModel: ObservableObject {
     private let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
 
     init() {
-        // Load the knowledge base from ottoman_knowledge.txt
-        if let url = Bundle.main.url(forResource: "ottoman_knowledge", withExtension: "txt"),
-           let text = try? String(contentsOf: url) {
-            self.knowledgeBaseText = text
-            print("Successfully loaded knowledge base.")
-        } else {
-            self.knowledgeBaseText = ""
-            print("Warning: Could not load ottoman_knowledge.txt. Knowledge base will be empty.")
-        }
+        // Load and merge the knowledge base files
+        let kb1 = ChatModel.loadResourceText(named: "ottoman_knowledge")
+        let kb2 = ChatModel.loadResourceText(named: "osmanli2")
+        let merged = [kb1, kb2].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
+        self.knowledgeBaseText = merged
+        print("Knowledge base loaded. Parts: \([kb1.isEmpty ? 0 : 1, kb2.isEmpty ? 0 : 1].reduce(0,+)) Length: \(merged.count) chars")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
@@ -151,5 +148,11 @@ class ChatModel: ObservableObject {
         }
         
         return nil
+    }
+
+    // Helper to load a UTF-8 text resource by basename
+    private static func loadResourceText(named baseName: String) -> String {
+        guard let url = Bundle.main.url(forResource: baseName, withExtension: "txt") else { return "" }
+        return (try? String(contentsOf: url)) ?? ""
     }
 }
