@@ -115,6 +115,9 @@ class ChatModel: ObservableObject {
                     // Log response body for debugging other errors
                     let body = String(data: data, encoding: .utf8) ?? "<no-body>"
                     print("API Error: status=\(httpResponse.statusCode) body=\(body)")
+                } else {
+                    // Fallback for non-HTTP responses
+                    print("API Error: Received a non-HTTP response.")
                 }
                 
                 // Non-HTTPURLResponse fallback
