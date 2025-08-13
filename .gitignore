@@ -1,0 +1,11 @@
+# Xcode
+.DS_Store
+/build/
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xccheckout
+*.moved-aside
+
+# Custom
+APIKey.swift

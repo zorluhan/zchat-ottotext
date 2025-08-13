@@ -18,13 +18,13 @@ struct ChatMessage: Codable, Identifiable, Hashable {
 class ChatModel: ObservableObject {
     
     @Published var messages = [ChatMessage]()
-    private var knowledgeBaseText: String = ""
-    
-    private let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
+    private let knowledgeBaseText: String
+    private let apiKey = APIKey.key // Use the key from APIKey.swift
 
     init() {
-        // Defer KB load to request time; keep init minimal
-        print("ChatModel initialized. KB will be loaded per request.")
+        // Load the knowledge base from the compile-time constant
+        self.knowledgeBaseText = KnowledgeBase.combined
+        print("Knowledge base loaded from compiled source. Length: \(self.knowledgeBaseText.count) chars")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
