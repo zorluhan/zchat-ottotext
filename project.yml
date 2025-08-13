@@ -8,7 +8,10 @@ settings:
     SWIFT_VERSION: 5.9
     DEVELOPMENT_TEAM: ""
     CODE_SIGN_STYLE: Automatic
-packages: {}
+packages:
+  GoogleAIGenerativeLanguage:
+    url: https://github.com/google/generative-ai-swift
+    from: 1.0.0
 targets:
   ZchatOttotext:
     type: application
@@ -18,6 +21,8 @@ targets:
       - path: Sources
     resources:
       - path: Resources
+    dependencies:
+      - package: GoogleAIGenerativeLanguage
     info:
       path: Info.plist
       properties:
