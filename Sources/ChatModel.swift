@@ -46,17 +46,8 @@ class ChatModel: ObservableObject {
         }
 
         let prompt = """
-        SYSTEM:
-        You are an expert Ottoman Turkish scribe. First scan the REFERENCE CORPUS below and apply its rules and mappings faithfully. If multiple rules conflict, prefer the one that appears later in the corpus; if still ambiguous, use standard, deterministic Ottoman orthography. Do not explain, do not add Latin text, return only the final Ottoman-script output.
-
-        REFERENCE CORPUS (from ottoman.txt):
-        ---
         \(knowledgeBaseText)
-        ---
-
-        TASK:
-        Convert the following Turkish (Latin) input to Ottoman Arabic script using the corpus above as the source of truth. Output ONLY the Ottoman text, no quotes, no commentary.
-
+        
         INPUT:
         \(text)
         """
