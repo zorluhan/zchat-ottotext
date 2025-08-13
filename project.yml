@@ -17,6 +17,8 @@ targets:
     sources:
       - path: Sources
       - path: Sources/APIKey.swift
+    settings:
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     resources:
       - path: Resources/ottoman.txt
     info:
