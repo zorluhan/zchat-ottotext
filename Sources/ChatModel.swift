@@ -18,10 +18,12 @@ struct ChatMessage: Codable, Identifiable, Hashable {
 class ChatModel: ObservableObject {
     
     @Published var messages = [ChatMessage]()
-    private let knowledgeBaseText: String = KnowledgeBase.combined
+    private let knowledgeBaseText: String
     private let apiKey = APIKey.key // Use the key from APIKey.swift
 
     init() {
+        // Load the knowledge base from the compile-time constant
+        self.knowledgeBaseText = KnowledgeBase.combined
         print("Knowledge base loaded from compiled source. Length: \(self.knowledgeBaseText.count) chars")
         
         // Load initial message
@@ -38,12 +40,9 @@ class ChatModel: ObservableObject {
     
     func convert(text: String) async {
         guard !apiKey.isEmpty else {
-            addAssistant("API key missing. Set GEMINI_API_KEY in the scheme.")
+            addAssistant("API key missing. Please set it in APIKey.swift")
             return
         }
-
-        // Use embedded system prompt content generated from ottoman.txt at build time
-        self.knowledgeBaseText = KnowledgeBase.combined
 
         let prompt = """
         \(knowledgeBaseText)
