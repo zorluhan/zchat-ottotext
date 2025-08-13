@@ -18,12 +18,10 @@ struct ChatMessage: Codable, Identifiable, Hashable {
 class ChatModel: ObservableObject {
     
     @Published var messages = [ChatMessage]()
-    private let knowledgeBaseText: String
+    private let knowledgeBaseText: String = KnowledgeBase.combined
     private let apiKey = APIKey.key // Use the key from APIKey.swift
 
     init() {
-        // Load the knowledge base from the compile-time constant
-        self.knowledgeBaseText = KnowledgeBase.combined
         print("Knowledge base loaded from compiled source. Length: \(self.knowledgeBaseText.count) chars")
         
         // Load initial message

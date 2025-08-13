@@ -3,21 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1849D8BE3CEEAB98FCB362ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FD73078ECED2B38B04691 /* ContentView.swift */; };
 		2E35A71126967B8356A2AEEA /* KnowledgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777241E41B18B5BCD159BAF /* KnowledgeBase.swift */; };
 		72F540FAC41305DAA0472B83 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3794B9CF65927EB3D12621C /* ChatModel.swift */; };
+		D837EFE35BB871F5DE5CB150 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5047D60F1A4E632D85841 /* APIKey.swift */; };
 		FE483C4B769597740EC2AD8A /* ZchatOttotextApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D830E5807ECBDC7055E6C6 /* ZchatOttotextApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34D5047D60F1A4E632D85841 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		4777241E41B18B5BCD159BAF /* KnowledgeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBase.swift; sourceTree = "<group>"; };
 		A1D830E5807ECBDC7055E6C6 /* ZchatOttotextApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZchatOttotextApp.swift; sourceTree = "<group>"; };
 		A30FD73078ECED2B38B04691 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E2B6314B42731485922FE99B /* ZchatOttotext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZchatOttotext.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2B6314B42731485922FE99B /* ZchatOttotext.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ZchatOttotext.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3794B9CF65927EB3D12621C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -25,6 +27,7 @@
 		93371137DE60D7BF776353B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				34D5047D60F1A4E632D85841 /* APIKey.swift */,
 				F3794B9CF65927EB3D12621C /* ChatModel.swift */,
 				A30FD73078ECED2B38B04691 /* ContentView.swift */,
 				4777241E41B18B5BCD159BAF /* KnowledgeBase.swift */,
@@ -79,6 +82,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					953D536206A64F42B32445CC = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -93,6 +97,7 @@
 			);
 			mainGroup = FE3222BC748A11A5F2CEC523;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -106,6 +111,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D837EFE35BB871F5DE5CB150 /* APIKey.swift in Sources */,
 				72F540FAC41305DAA0472B83 /* ChatModel.swift in Sources */,
 				1849D8BE3CEEAB98FCB362ED /* ContentView.swift in Sources */,
 				2E35A71126967B8356A2AEEA /* KnowledgeBase.swift in Sources */,
@@ -121,7 +127,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6FY7N5NDA7;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -262,7 +267,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6FY7N5NDA7;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
