@@ -5,18 +5,7 @@ struct ContentView: View {
     @State private var input: String = ""
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("ottotext")
-                    .font(.system(.headline, design: .monospaced))
-                    .foregroundColor(.green)
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top, 8)
-
-            Divider().background(Color.green.opacity(0.5))
-
+        ZStack {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 8) {
@@ -33,6 +22,7 @@ struct ContentView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.top, 4) // below divider
                 }
                 .onChange(of: model.messages.count) { _ in
                     if let last = model.messages.last?.id {
@@ -40,7 +30,24 @@ struct ContentView: View {
                     }
                 }
             }
-
+        }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .preferredColorScheme(.dark)
+        .safeAreaInset(edge: .top) {
+            VStack(spacing: 0) {
+                HStack {
+                    Text("ottotext")
+                        .font(.system(.headline, design: .monospaced))
+                        .foregroundColor(.green)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                Divider().background(Color.green.opacity(0.5))
+            }
+            .background(Color.black)
+        }
+        .safeAreaInset(edge: .bottom) {
             HStack(spacing: 8) {
                 TextField("type a message…", text: $input)
                     .textFieldStyle(.roundedBorder)
@@ -51,9 +58,8 @@ struct ContentView: View {
                 .disabled(input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
             .padding()
+            .background(Color.black)
         }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
-        .preferredColorScheme(.dark)
     }
 
     func send() {
