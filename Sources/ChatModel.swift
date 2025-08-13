@@ -45,11 +45,32 @@ class ChatModel: ObservableObject {
         }
 
         // Load ottoman.txt from bundle each time to ensure latest packaged content
-        if let url = Bundle.main.url(forResource: "ottoman", withExtension: "txt"),
-           let kb = try? String(contentsOf: url, encoding: .utf8) {
-            self.knowledgeBaseText = kb
+        var loaded = false
+        if let url = Bundle.main.url(forResource: "ottoman", withExtension: "txt") {
+            do {
+                let kb = try String(contentsOf: url, encoding: .utf8)
+                self.knowledgeBaseText = kb
+                loaded = true
+                print("KB load: url() succeeded (\(kb.count) chars)")
+            } catch {
+                print("KB load: url() read failed: \(error)")
+            }
         } else {
+            print("KB load: url() returned nil for ottoman.txt")
+        }
+        if !loaded, let path = Bundle.main.path(forResource: "ottoman", ofType: "txt") {
+            do {
+                let kb = try String(contentsOfFile: path, encoding: .utf8)
+                self.knowledgeBaseText = kb
+                loaded = true
+                print("KB load: path() succeeded (\(kb.count) chars)")
+            } catch {
+                print("KB load: path() read failed: \(error)")
+            }
+        }
+        if !loaded {
             self.knowledgeBaseText = ""
+            print("KB load: FAILED — ottoman.txt not found in bundle")
         }
 
         let prompt = """
