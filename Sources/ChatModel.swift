@@ -71,6 +71,8 @@ class ChatModel: ObservableObject {
         \(text)
         """
         
+        print("--- PROMPT SENT TO GEMINI ---\n\(prompt)\n-----------------------------")
+        
         let urlStr = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=\(apiKey)"
         guard let endpoint = URL(string: urlStr) else {
             addAssistant("Error: Invalid API endpoint.")
