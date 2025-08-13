@@ -5,7 +5,7 @@ struct ContentView: View {
     @State private var input: String = ""
 
     var body: some View {
-        ZStack {
+        NavigationStack {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 8) {
@@ -22,7 +22,6 @@ struct ContentView: View {
                         }
                     }
                     .padding(.horizontal)
-                    .padding(.top, 4) // below divider
                 }
                 .onChange(of: model.messages.count) { _ in
                     if let last = model.messages.last?.id {
@@ -30,36 +29,32 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
-        .preferredColorScheme(.dark)
-        .safeAreaInset(edge: .top) {
-            VStack(spacing: 0) {
-                HStack {
+            .background(Color.black)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
                     Text("ottotext")
                         .font(.system(.headline, design: .monospaced))
                         .foregroundColor(.green)
-                    Spacer()
                 }
-                .padding(.horizontal)
-                .padding(.top, 8)
-                Divider().background(Color.green.opacity(0.5))
-            }
-            .background(Color.black)
-        }
-        .safeAreaInset(edge: .bottom) {
-            HStack(spacing: 8) {
-                TextField("type a message…", text: $input)
-                    .textFieldStyle(.roundedBorder)
-                    .onSubmit(send)
-                Button(action: send) {
-                    Image(systemName: "arrow.up.circle.fill").font(.system(size: 26))
+                ToolbarItem(placement: .bottomBar) {
+                    HStack(spacing: 8) {
+                        TextField("type a message…", text: $input)
+                            .textFieldStyle(.roundedBorder)
+                            .onSubmit(send)
+                        Button(action: send) {
+                            Image(systemName: "arrow.up.circle.fill").font(.system(size: 26))
+                        }
+                        .disabled(input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    }
                 }
-                .disabled(input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
-            .padding()
-            .background(Color.black)
+            .navigationBarTitleDisplayMode(.inline)
         }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .preferredColorScheme(.dark)
     }
 
     func send() {
