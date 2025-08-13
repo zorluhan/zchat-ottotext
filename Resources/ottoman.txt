@@ -3,3 +3,76 @@ Ottoman orthography guidance (short):
 - Preserve punctuation and numbers.
 - Use common forms (e.g., ك for k, گ for g before front vowels, ق otherwise; و for u/o; ي for i/e; ى for final i).
 - If word ends with -ng, prefer final NG (ﯓ) when appropriate.
+
+Harika bir fikir! Yapay zekanın Osmanlı harfleriyle metin üretebilmesi için ona verilecek olan bu dökümanın, kuralları net ve anlaşılır bir şekilde özetlemesi gerekir. Aşağıda, bu amaç için dökümanın en işe yarayacak şekilde kısaltılmış halini bulabilirsiniz. Bu prompt, yapay zekaya ne yapması gerektiğini, hangi kurallara uyması gerektiğini ve nelere dikkat etmesi gerektiğini doğrudan anlatır.
+
+---
+
+### **Yapay Zeka İçin Optimize Edilmiş Prompt: Osmanlı Harfleriyle Metin Yazma Kuralları**
+
+**Genel Amaç:** Bu belgedeki kuralları kullanarak, modern Türkçe metinleri Osmanlı alfabesiyle doğru bir şekilde yazmalısın. Hedef kitle, Arapça alfabesine aşina olan ilahiyat öğrencileridir.
+
+**Temel Prensipler:**
+1.  **Arapça ve Farsça Kökenli Kelimeler:** Bu kelimeler, Osmanlı Türkçesinde kendi orijinal imlâlarıyla yazılır. Aşağıdaki imlâ kuralları, yalnızca Türkçe kökenli kelimeler ve Türkçe eklere uygulanır.
+2.  **Kalınlık ve İncelik Uyumu:** Harf seçimi, kelimedeki ünlülerin kalın (a, ı, o, u) veya ince (e, i, ö, ü) olmasına bağlıdır.
+    * **Kalın Ünlülerle:** ق (k), غ (ğ), ص (s), ط (t/d) kullanılır.
+    * **İnce Ünlülerle:** ك (k), گ (g/ğ), س (s), ت (t), د (d) kullanılır.
+
+**1. Türkçe Kelimelerde Ünlülerin (Sesli Harflerin) Yazımı (İmlâ)**
+
+Ünlüler **Elif (ا)**, **He (ه)**, **Vav (و)**, **Ye (ى)** harfleri kullanılarak gösterilir.
+
+| Ünlü | Kelime Başında | Kelime Ortasında | Kelime Sonunda |
+| :--- | :--- | :--- | :--- |
+| **a** | **آ** (Medli Elif) | **ا** (Elif) | **ا** (Elif) veya **ه** (He) |
+| | `آت` (at), `آنا` (ana) | `بابا` (baba), `قاپی` (kapı) | `بابا` (baba), `آرابه` (araba) |
+| **e** | **ا** (Elif) | Genellikle harfle gösterilmez. | **ه** (He) |
+| | `ال` (el), `اور` (ev) | `گلدی` (geldi), `سودی` (sevdi) | `دده` (dede), `تپه` (tepe) |
+| **ı / i** | **ایـ** (Elif + Ye) | **ی** (Ye) | **ی** (Ye) |
+| | `ایش` (iş), `ایپ` (ip) | `قیردی` (kırdı), `سیلدی` (sildi) | `قاپی` (kapı), `دلی` (deli) |
+| **o / ö / u / ü**| **او** (Elif + Vav) | **و** (Vav) | **و** (Vav) |
+| | `اوق` (ok), `اوچ` (üç) | `قول` (kol), `گول` (göl), `قورو` (kuru) | `صو` (su), `اوتو` (ütü) |
+
+**2. Türkçe Eklerin Yazımı**
+
+Ekler, genellikle kelimenin ses yapısına bakılmaksızın kalıplaşmış (klişe) şekilde yazılır.
+* **Çoğul Eki (`-lar / -ler`):** **لر** `آتلر` (atlar), `اللر` (eller)
+* **Hal Ekleri:**
+    * `-i / -ı / -u / -ü`: **ی** `اَوی` (evi), `قاپویی` (kapıyı)
+    * `-e / -a`: **ه** `اَوه` (eve), `قاپویه` (kapıya)
+    * `-de / -da / -te / -ta`: **ده** `اوده` (evde), `آتده` (atta)
+    * `-den / -dan / -ten / -tan`: **دن** `اودن` (evden), `آتدن` (attan)
+* **Aitlik (İyelik) Ekleri:**
+    * 1. Tekil (`-ım / -im`): **م** `قلمم` (kalemim)
+    * 2. Tekil (`-ın / -in`): **ڭ** (Kâf-ı Nûnî) `قلمڭ` (kalemin)
+    * 3. Tekil (`-ı / -i / -sı / -si`): **ی / سی** `قلمی` (kalemi), `قاپوسی` (kapısı)
+    * 1. Çoğul (`-ımız / -imiz`): **مز** `قلممز` (kalemimiz)
+    * 2. Çoğul (`-ınız / -iniz`): **ڭز** `قلمڭز` (kaleminiz)
+    * 3. Çoğul (`-ları / -leri`): **لری** `قلملری` (kalemleri)
+* **Soru Eki (`-mı / -mi / -mu / -mü`):** Kelimeye bitişik **می** yazılır. `گلدی می` (geldi mi?)
+* **Fiil Zaman Ekleri:**
+    * `-dı / -di`: **دی** `آلدی` (aldı), `گلدی` (geldi)
+    * `-mış / -miş`: **مش** `آلمش` (almış), `گلمش` (gelmiş)
+    * `-acak / -ecek`: **ه جق / ه جك** `آله جق` (alacak), `گله جك` (gelecek)
+    * `-ıyor`: **یور** `گلیور` (geliyor)
+* **Mastarlar (`-mak / -mek`):** **مق / مك** `آلمق` (almak), `گلمك` (gelmek)
+* **Sıfat Yapan Ekler:**
+    * `-lı / -li / -lu / -lü`: **لی** `طوزلی` (tuzlu), `شكرلی` (şekerli)
+    * `-sız / -siz / -suz / -süz`: **سز** `طوزسز` (tuzsuz), `شكرسز` (şekersiz)
+    * `-lık / -lik / -luk / -lük`: **لق / لك** `طوزلق` (tuzluk), `شكرلك` (şekerlik)
+
+**3. Özel Harfler ve Durumlar**
+
+* **Türkçeye Özgü Harfler:** Farsçadan alınan **پ, چ, ژ, گ** harfleri kullanılır.
+* **Kâf Harfinin Çeşitleri:**
+    * **k (ince), g (ince), ğ (ince), y:** **ك** `كدی` (kedi), `گلدی` (geldi), `دگل` (değil)
+    * **k (kalın):** **ق** `قاپو` (kapı)
+    * **ğ (kalın), g (kalın):** **غ** `طاغ` (dağ), `غاafil` (gâfil)
+    * **n (genizden, nazal):** **ڭ** (Kâf-ı Nûnî) `دڭیز` (deniz), `سڭا` (sana)
+* **Kalıplaşmış Yazımlar:** Bazı kelimeler kurallara uymadan, kalıplaşmış şekilde yazılır:
+    * `گبی` (gibi)
+    * `ایچون` (için)
+    * `بر` (bir)
+    * `چوق` (çok)
+    * `و` (ve)
+

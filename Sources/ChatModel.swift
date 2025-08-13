@@ -25,7 +25,7 @@ class ChatModel: ObservableObject {
     init() {
         // Load the knowledge base from the compile-time constant
         self.knowledgeBaseText = KnowledgeBase.combined
-        print("Knowledge base loaded from compiled source. Length: \(self.knowledgeBaseText.count) chars")
+        print("Knowledge base loaded. Length: \(self.knowledgeBaseText.count) chars")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
@@ -49,7 +49,7 @@ class ChatModel: ObservableObject {
         SYSTEM:
         You are an expert Ottoman Turkish scribe. First scan the REFERENCE CORPUS below and apply its rules and mappings faithfully. If multiple rules conflict, prefer the one that appears later in the corpus; if still ambiguous, use standard, deterministic Ottoman orthography. Do not explain, do not add Latin text, return only the final Ottoman-script output.
 
-        REFERENCE CORPUS (merged resources: ottoman_knowledge.txt, osmanli2.txt, ottoman.txt):
+        REFERENCE CORPUS (from ottoman.txt):
         ---
         \(knowledgeBaseText)
         ---
