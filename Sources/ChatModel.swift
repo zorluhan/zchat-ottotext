@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import GoogleGenerativeAI
 
 struct ChatMessage: Codable, Identifiable, Hashable {
     var id = UUID()
@@ -15,35 +14,24 @@ struct ChatMessage: Codable, Identifiable, Hashable {
     }
 }
 
-
 @MainActor
 class ChatModel: ObservableObject {
     
-    // This is not secure for a production app.
-    // See https://ai.google.dev/gemini-api/docs/api-key-setup
-    static let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
-
     @Published var messages = [ChatMessage]()
+    private let knowledgeBaseText: String
     
-    private var generativeModel: GenerativeModel
-    private let vectorManager = VectorManager.shared // Initialize the manager
+    private let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
 
     init() {
-        guard !ChatModel.apiKey.isEmpty else {
-            fatalError("Please provide an API Key in ChatModel.swift by setting the GEMINI_API_KEY environment variable.")
+        // Load the knowledge base from ottoman_knowledge.txt
+        if let url = Bundle.main.url(forResource: "ottoman_knowledge", withExtension: "txt"),
+           let text = try? String(contentsOf: url) {
+            self.knowledgeBaseText = text
+            print("Successfully loaded knowledge base.")
+        } else {
+            self.knowledgeBaseText = ""
+            print("Warning: Could not load ottoman_knowledge.txt. Knowledge base will be empty.")
         }
-        
-        let config = GenerationConfig(
-            responseMIMEType: "text/plain",
-            temperature: 0,
-            maxOutputTokens: 2048
-        )
-        
-        self.generativeModel = GenerativeModel(
-            name: "gemini-1.5-pro-latest",
-            apiKey: ChatModel.apiKey,
-            generationConfig: config
-        )
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
@@ -53,45 +41,81 @@ class ChatModel: ObservableObject {
         messages.append(ChatMessage(role: "user", text: text))
     }
     
-    func addAssistant(_ text: String) {
+    private func addAssistant(_ text: String) {
         messages.append(ChatMessage(role: "model", text: text))
     }
     
     func convert(text: String) async {
-        let relevantContext = await vectorManager.findRelevantContext(for: text)
-        
-        let prompt: String
-        if !relevantContext.isEmpty {
-            prompt = """
-            REFERENCE CONTEXT:
-            ---
-            \(relevantContext)
-            ---
-            Based *only* on the reference context, if it is relevant, and your own knowledge, convert the following Turkish text to Ottoman script.
-            
-            TEXT TO CONVERT:
-            \(text)
-            """
-        } else {
-            prompt = """
-            Convert the following Turkish text to Ottoman script.
-            
-            TEXT TO CONVERT:
-            \(text)
-            """
+        guard !apiKey.isEmpty else {
+            addAssistant("API key missing. Set GEMINI_API_KEY in the scheme.")
+            return
         }
 
+        let prompt = """
+        REFERENCE TEXT:
+        ---
+        \(knowledgeBaseText)
+        ---
+        Based on the reference text provided above, convert the following Turkish text to Ottoman script. Return only the final Ottoman script.
+
+        TEXT TO CONVERT:
+        \(text)
+        """
+        
+        let urlStr = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=\(apiKey)"
+        guard let endpoint = URL(string: urlStr) else {
+            addAssistant("Error: Invalid API endpoint.")
+            return
+        }
+        
+        var request = URLRequest(url: endpoint)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let payload: [String: Any] = [
+            "contents": [["role": "user", "parts": [["text": prompt]]]],
+            "generationConfig": [
+                "temperature": 0.0,
+                "maxOutputTokens": 2048,
+                "responseMimeType": "text/plain"
+            ]
+        ]
+        
         do {
-            let response = try await generativeModel.generateContent(prompt)
+            request.httpBody = try JSONSerialization.data(withJSONObject: payload)
             
-            if let responseText = response.text {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                print("API Error: Invalid response - \(response)")
+                addAssistant("The system is not available right now. Please try again later.")
+                return
+            }
+            
+            if let responseText = parseText(from: data) {
                 addAssistant(responseText)
             } else {
-                addAssistant("The system returned an empty response. Please try again.")
+                addAssistant("The system returned an unreadable response. Please try again.")
             }
+            
         } catch {
-            print("Gemini error:", error)
-            addAssistant("The system is not available right now. Please try again later.")
+            print("API Request Error: \(error)")
+            addAssistant("An error occurred while communicating with the system.")
         }
+    }
+    
+    private func parseText(from data: Data) -> String? {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let candidates = json["candidates"] as? [[String: Any]],
+              let content = candidates.first?["content"] as? [String: Any],
+              let parts = content["parts"] as? [[String: Any]],
+              let text = parts.first?["text"] as? String else {
+            
+            if let blockReason = (json["promptFeedback"] as? [String: Any])?["blockReason"] as? String {
+                print("Content blocked by API. Reason: \(blockReason)")
+            }
+            return nil
+        }
+        return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

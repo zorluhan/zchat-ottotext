@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1849D8BE3CEEAB98FCB362ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FD73078ECED2B38B04691 /* ContentView.swift */; };
-		28A5A6B48D95ABD098FC9562 /* GoogleAIGenerativeLanguage in Frameworks */ = {isa = PBXBuildFile; productRef = 75245433D2B2B328338A1A9B /* GoogleAIGenerativeLanguage */; };
 		72F540FAC41305DAA0472B83 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3794B9CF65927EB3D12621C /* ChatModel.swift */; };
+		B667CF4060F1E4EECD48E468 /* VectorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44759382C7AF9254509DA23 /* VectorManager.swift */; };
 		FE483C4B769597740EC2AD8A /* ZchatOttotextApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D830E5807ECBDC7055E6C6 /* ZchatOttotextApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,19 +17,9 @@
 		A1D830E5807ECBDC7055E6C6 /* ZchatOttotextApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZchatOttotextApp.swift; sourceTree = "<group>"; };
 		A30FD73078ECED2B38B04691 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E2B6314B42731485922FE99B /* ZchatOttotext.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ZchatOttotext.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44759382C7AF9254509DA23 /* VectorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorManager.swift; sourceTree = "<group>"; };
 		F3794B9CF65927EB3D12621C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		11B3C72607AF5A79AB57F78F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28A5A6B48D95ABD098FC9562 /* GoogleAIGenerativeLanguage in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		93371137DE60D7BF776353B9 /* Sources */ = {
@@ -37,6 +27,7 @@
 			children = (
 				F3794B9CF65927EB3D12621C /* ChatModel.swift */,
 				A30FD73078ECED2B38B04691 /* ContentView.swift */,
+				E44759382C7AF9254509DA23 /* VectorManager.swift */,
 				A1D830E5807ECBDC7055E6C6 /* ZchatOttotextApp.swift */,
 			);
 			path = Sources;
@@ -66,7 +57,6 @@
 			buildConfigurationList = B584AB5CF344662789D49920 /* Build configuration list for PBXNativeTarget "ZchatOttotext" */;
 			buildPhases = (
 				763982242270843B8BC42398 /* Sources */,
-				11B3C72607AF5A79AB57F78F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -74,7 +64,6 @@
 			);
 			name = ZchatOttotext;
 			packageProductDependencies = (
-				75245433D2B2B328338A1A9B /* GoogleAIGenerativeLanguage */,
 			);
 			productName = ZchatOttotext;
 			productReference = E2B6314B42731485922FE99B /* ZchatOttotext.app */;
@@ -105,9 +94,6 @@
 			);
 			mainGroup = FE3222BC748A11A5F2CEC523;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				278846FDF479C0252C55A179 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
-			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -124,6 +110,7 @@
 			files = (
 				72F540FAC41305DAA0472B83 /* ChatModel.swift in Sources */,
 				1849D8BE3CEEAB98FCB362ED /* ContentView.swift in Sources */,
+				B667CF4060F1E4EECD48E468 /* VectorManager.swift in Sources */,
 				FE483C4B769597740EC2AD8A /* ZchatOttotextApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,25 +297,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		278846FDF479C0252C55A179 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/generative-ai-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		75245433D2B2B328338A1A9B /* GoogleAIGenerativeLanguage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 278846FDF479C0252C55A179 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
-			productName = GoogleAIGenerativeLanguage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6527327B9569A3AE8DB11029 /* Project object */;
 }
