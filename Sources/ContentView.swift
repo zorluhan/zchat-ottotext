@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     @EnvironmentObject var model: ChatModel
@@ -47,6 +48,16 @@ struct ContentView: View {
                     Text(m.text)
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.green)
+                        .textSelection(.enabled)
+                        .contextMenu {
+                            Button(action: { UIPasteboard.general.string = m.text }) {
+                                Label("Copy", systemImage: "doc.on.doc")
+                            }
+                        }
+                        .onTapGesture {
+                            // Quick tap-to-copy convenience
+                            UIPasteboard.general.string = m.text
+                        }
                 }
                 .id(m.id)
             }
