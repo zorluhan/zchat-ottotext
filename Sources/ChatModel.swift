@@ -26,9 +26,11 @@ class ChatModel: ObservableObject {
         // Load and merge the knowledge base files
         let kb1 = ChatModel.loadResourceText(named: "ottoman_knowledge")
         let kb2 = ChatModel.loadResourceText(named: "osmanli2")
-        let merged = [kb1, kb2].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
+        let kb3 = ChatModel.loadResourceText(named: "ottoman")
+        let merged = [kb1, kb2, kb3].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
         self.knowledgeBaseText = merged
-        print("Knowledge base loaded. Parts: \([kb1.isEmpty ? 0 : 1, kb2.isEmpty ? 0 : 1].reduce(0,+)) Length: \(merged.count) chars")
+        let partCount = [kb1, kb2, kb3].filter { !$0.isEmpty }.count
+        print("Knowledge base loaded. Parts: \(partCount) Length: \(merged.count) chars")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
