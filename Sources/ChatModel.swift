@@ -51,13 +51,18 @@ class ChatModel: ObservableObject {
         }
 
         let prompt = """
-        REFERENCE TEXT:
+        SYSTEM:
+        You are an expert Ottoman Turkish scribe. First scan the REFERENCE CORPUS below and apply its rules and mappings faithfully. If multiple rules conflict, prefer the one that appears later in the corpus; if still ambiguous, use standard, deterministic Ottoman orthography. Do not explain, do not add Latin text, return only the final Ottoman-script output.
+
+        REFERENCE CORPUS (merged resources: ottoman_knowledge.txt, osmanli2.txt, ottoman.txt):
         ---
         \(knowledgeBaseText)
         ---
-        Based on the reference text provided above, convert the following Turkish text to Ottoman script. Return only the final Ottoman script.
 
-        TEXT TO CONVERT:
+        TASK:
+        Convert the following Turkish (Latin) input to Ottoman Arabic script using the corpus above as the source of truth. Output ONLY the Ottoman text, no quotes, no commentary.
+
+        INPUT:
         \(text)
         """
         
@@ -154,7 +159,16 @@ class ChatModel: ObservableObject {
 
     // Helper to load a UTF-8 text resource by basename
     private static func loadResourceText(named baseName: String) -> String {
-        guard let url = Bundle.main.url(forResource: baseName, withExtension: "txt") else { return "" }
-        return (try? String(contentsOf: url)) ?? ""
+        if let url = Bundle.main.url(forResource: baseName, withExtension: "txt") {
+            if let s = try? String(contentsOf: url) {
+                print("Loaded resource from bundle: \(baseName).txt (\(s.count) chars)")
+                return s
+            } else {
+                print("Failed to read bundled resource: \(baseName).txt")
+            }
+        } else {
+            print("Resource not found in bundle: \(baseName).txt")
+        }
+        return ""
     }
 }
