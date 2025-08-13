@@ -105,17 +105,25 @@ class ChatModel: ObservableObject {
     }
     
     private func parseText(from data: Data) -> String? {
-        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let candidates = json["candidates"] as? [[String: Any]],
-              let content = candidates.first?["content"] as? [String: Any],
-              let parts = content["parts"] as? [[String: Any]],
-              let text = parts.first?["text"] as? String else {
-            
-            if let blockReason = (json["promptFeedback"] as? [String: Any])?["blockReason"] as? String {
-                print("Content blocked by API. Reason: \(blockReason)")
-            }
+        // Parse once into a root object
+        guard let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return nil
         }
-        return text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Log block reason if present
+        if let feedback = root["promptFeedback"] as? [String: Any],
+           let reason = feedback["blockReason"] as? String {
+            print("Content blocked by API. Reason: \(reason)")
+        }
+        
+        // Extract text from the first candidate
+        if let candidates = root["candidates"] as? [[String: Any]],
+           let content = candidates.first?["content"] as? [String: Any],
+           let parts = content["parts"] as? [[String: Any]],
+           let text = parts.first?["text"] as? String {
+            return text.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        
+        return nil
     }
 }
