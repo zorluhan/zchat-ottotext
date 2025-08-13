@@ -18,6 +18,9 @@ targets:
       - path: Sources
     resources:
       - path: Resources
+      - path: Resources/ottoman_knowledge.txt
+      - path: Resources/osmanli2.txt
+      - path: Resources/ottoman.txt
     info:
       path: Info.plist
       properties:
