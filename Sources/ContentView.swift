@@ -5,20 +5,24 @@ struct ContentView: View {
     @State private var input: String = ""
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            Divider().background(Color.green.opacity(0.5))
-            ScrollViewReader { proxy in
-                ScrollView { messagesList }
-                    .onChange(of: model.messages.count) { _ in
-                        if let last = model.messages.last?.id {
-                            withAnimation { proxy.scrollTo(last, anchor: .bottom) }
+        ZStack {
+            Color.black.ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                header
+                Divider().background(Color.green.opacity(0.5))
+                ScrollViewReader { proxy in
+                    ScrollView { messagesList }
+                        .onChange(of: model.messages.count) { _ in
+                            if let last = model.messages.last?.id {
+                                withAnimation { proxy.scrollTo(last, anchor: .bottom) }
+                            }
                         }
-                    }
+                }
+                inputBar
             }
-            inputBar
+            .padding(.top, 1) // A minimal padding to push content from the absolute top edge
         }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
     }
 
@@ -61,6 +65,7 @@ struct ContentView: View {
             .disabled(input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
         .padding()
+        .padding(.bottom, 8) // Add some padding for devices without a bottom safe area
     }
 
     func send() {
