@@ -27,9 +27,14 @@ class ChatModel: ObservableObject {
         let kb1 = ChatModel.loadResourceText(named: "ottoman_knowledge")
         let kb2 = ChatModel.loadResourceText(named: "osmanli2")
         let kb3 = ChatModel.loadResourceText(named: "ottoman")
-        let merged = [kb1, kb2, kb3].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
+        var merged = [kb1, kb2, kb3].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
+        var partCount = [kb1, kb2, kb3].filter { !$0.isEmpty }.count
+        if merged.isEmpty {
+            merged = KnowledgeBase.combined
+            partCount = merged.isEmpty ? 0 : 1
+            print("Using embedded KnowledgeBase fallback. Length: \(merged.count) chars")
+        }
         self.knowledgeBaseText = merged
-        let partCount = [kb1, kb2, kb3].filter { !$0.isEmpty }.count
         print("Knowledge base loaded. Parts: \(partCount) Length: \(merged.count) chars")
         
         // Load initial message
