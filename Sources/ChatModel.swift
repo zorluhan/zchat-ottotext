@@ -23,19 +23,9 @@ class ChatModel: ObservableObject {
     private let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
 
     init() {
-        // Load and merge the knowledge base files
-        let kb1 = ChatModel.loadResourceText(named: "ottoman_knowledge")
-        let kb2 = ChatModel.loadResourceText(named: "osmanli2")
-        let kb3 = ChatModel.loadResourceText(named: "ottoman")
-        var merged = [kb1, kb2, kb3].filter { !$0.isEmpty }.joined(separator: "\n\n---\n\n")
-        var partCount = [kb1, kb2, kb3].filter { !$0.isEmpty }.count
-        if merged.isEmpty {
-            merged = KnowledgeBase.combined
-            partCount = merged.isEmpty ? 0 : 1
-            print("Using embedded KnowledgeBase fallback. Length: \(merged.count) chars")
-        }
-        self.knowledgeBaseText = merged
-        print("Knowledge base loaded. Parts: \(partCount) Length: \(merged.count) chars")
+        // Load the knowledge base from the compile-time constant
+        self.knowledgeBaseText = KnowledgeBase.combined
+        print("Knowledge base loaded from compiled source. Length: \(self.knowledgeBaseText.count) chars")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
@@ -73,7 +63,7 @@ class ChatModel: ObservableObject {
         
         print("--- PROMPT SENT TO GEMINI ---\n\(prompt)\n-----------------------------")
         
-        let urlStr = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=\(apiKey)"
+        let urlStr = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=\(apiKey)"
         guard let endpoint = URL(string: urlStr) else {
             addAssistant("Error: Invalid API endpoint.")
             return
@@ -162,20 +152,5 @@ class ChatModel: ObservableObject {
         }
         
         return nil
-    }
-
-    // Helper to load a UTF-8 text resource by basename
-    private static func loadResourceText(named baseName: String) -> String {
-        if let url = Bundle.main.url(forResource: baseName, withExtension: "txt") {
-            if let s = try? String(contentsOf: url) {
-                print("Loaded resource from bundle: \(baseName).txt (\(s.count) chars)")
-                return s
-            } else {
-                print("Failed to read bundled resource: \(baseName).txt")
-            }
-        } else {
-            print("Resource not found in bundle: \(baseName).txt")
-        }
-        return ""
     }
 }
