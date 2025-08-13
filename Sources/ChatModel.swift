@@ -18,14 +18,13 @@ struct ChatMessage: Codable, Identifiable, Hashable {
 class ChatModel: ObservableObject {
     
     @Published var messages = [ChatMessage]()
-    private let knowledgeBaseText: String
+    private var knowledgeBaseText: String = ""
     
     private let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] ?? ""
 
     init() {
-        // Load the knowledge base from the compile-time constant
-        self.knowledgeBaseText = KnowledgeBase.combined
-        print("Knowledge base loaded. Length: \(self.knowledgeBaseText.count) chars")
+        // Defer KB load to request time; keep init minimal
+        print("ChatModel initialized. KB will be loaded per request.")
         
         // Load initial message
         messages.append(ChatMessage(role: "system", text: "Selam! Bana Osmanlıca çevirisini istediğin bir metin ver."))
@@ -45,9 +44,17 @@ class ChatModel: ObservableObject {
             return
         }
 
+        // Load ottoman.txt from bundle each time to ensure latest packaged content
+        if let url = Bundle.main.url(forResource: "ottoman", withExtension: "txt"),
+           let kb = try? String(contentsOf: url, encoding: .utf8) {
+            self.knowledgeBaseText = kb
+        } else {
+            self.knowledgeBaseText = ""
+        }
+
         let prompt = """
         \(knowledgeBaseText)
-        
+
         INPUT:
         \(text)
         """
