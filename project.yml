@@ -24,6 +24,7 @@ targets:
         INFOPLIST_FILE: Info.plist
     resources:
       - path: Resources/ottoman.txt
+      - path: Resources/Assets.xcassets
     info:
       path: Info.plist
       properties:
