@@ -100,12 +100,13 @@ struct TypingIndicator: View {
                 Circle()
                     .frame(width: 8, height: 8)
                     .scaleEffect(dotScales[i])
+                    .foregroundColor(.green)
                     .animation(Animation.easeInOut(duration: 0.6).repeatForever().delay(Double(i) * 0.2), value: dotScales[i])
             }
         }
         .padding(10)
-        .background(Color.gray.opacity(0.4))
-        .cornerRadius(10)
+        .background(Color.black.opacity(0.8))
+        .cornerRadius(16)
         .onAppear {
             dotScales = [1, 1, 1]
         }
