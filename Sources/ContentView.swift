@@ -61,6 +61,9 @@ struct ContentView: View {
                 }
                 .id(m.id)
             }
+            if model.isTyping {
+                TypingIndicator()
+            }
         }
         .padding(.horizontal)
     }
@@ -85,5 +88,26 @@ struct ContentView: View {
         model.addUser(text)
         Task { await model.convert(text: text) }
         input = ""
+    }
+}
+
+struct TypingIndicator: View {
+    @State private var dotScales: [CGFloat] = [0.5, 0.5, 0.5]
+
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(0..<3) { i in
+                Circle()
+                    .frame(width: 8, height: 8)
+                    .scaleEffect(dotScales[i])
+                    .animation(Animation.easeInOut(duration: 0.6).repeatForever().delay(Double(i) * 0.2), value: dotScales[i])
+            }
+        }
+        .padding(10)
+        .background(Color.gray.opacity(0.4))
+        .cornerRadius(10)
+        .onAppear {
+            dotScales = [1, 1, 1]
+        }
     }
 }

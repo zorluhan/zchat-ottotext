@@ -18,6 +18,7 @@ struct ChatMessage: Codable, Identifiable, Hashable {
 class ChatModel: ObservableObject {
     
     @Published var messages = [ChatMessage]()
+    @Published var isTyping = false
     private let knowledgeBaseText: String
     private let apiKey = APIKey.key // Use the key from APIKey.swift
 
@@ -39,8 +40,11 @@ class ChatModel: ObservableObject {
     }
     
     func convert(text: String) async {
+        isTyping = true
+        
         guard !apiKey.isEmpty else {
             addAssistant("API key missing. Please set it in APIKey.swift")
+            isTyping = false
             return
         }
 
@@ -56,6 +60,7 @@ class ChatModel: ObservableObject {
         let urlStr = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=\(apiKey)"
         guard let endpoint = URL(string: urlStr) else {
             addAssistant("Error: Invalid API endpoint.")
+            isTyping = false
             return
         }
         
@@ -88,6 +93,7 @@ class ChatModel: ObservableObject {
                         } else {
                             addAssistant("The system returned an unreadable response. Please try again.")
                         }
+                        isTyping = false
                         return
                     }
                     
@@ -112,6 +118,7 @@ class ChatModel: ObservableObject {
                 
                 // Non-HTTPURLResponse fallback
                 addAssistant("The system is not available right now. Please try again later.")
+                isTyping = false
                 return
             } catch {
                 print("API Request Error (attempt \(attempt + 1)): \(error)")
@@ -122,6 +129,7 @@ class ChatModel: ObservableObject {
         }
         
         addAssistant("The system is experiencing heavy load. Please try again in a moment.")
+        isTyping = false
     }
     
     private func parseText(from data: Data) -> String? {
