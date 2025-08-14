@@ -18,7 +18,10 @@ targets:
       - path: Sources
       - path: Sources/APIKey.swift
     settings:
-      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.zchatottotext
+        INFOPLIST_FILE: Info.plist
     resources:
       - path: Resources/ottoman.txt
     info:
@@ -27,7 +30,3 @@ targets:
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         UIRequiresFullScreen: true
         UILaunchScreen: {}
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.zchatottotext
-        INFOPLIST_FILE: Info.plist
