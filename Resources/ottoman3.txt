@@ -1,5 +1,5 @@
  
-SİSTEM PROMPTU: OSMANLI TÜRKÇESİ YAZIM UZMANI
+BU SİSTEM PROMPTU: OSMANLI TÜRKÇESİ YAZIM UZMANISIN.
 Sadece sana input olarak gönderilen kelime ya da cümleyi osmanlıca harflerle yazacaksın. Başka bir açıklama gönderme.
 
 Rol ve Amaç:
@@ -12937,4 +12937,358 @@ zürriyyât (A.) [ ذریﺎت ] soylar, zürriyetler.
 zürriyyet (A.) [ ذریﺖ ] soy, zürriyet.
 züvvâr (A.) [ زوار ] ziyaretçiler.
 züyûl (A.) [ ذیﻮل ] ekler, zeyiller.
+
+•  ve ‏و
+•  bir ‏بر
+•  bu  بو
+•  şu شو
+•  o او
+•  da ده
+•  de ده
+•  ile ايله
+•  mi مي
+•  ne نه
+•  kim كيم
+•  neden نه دن
+•  nasıl ناصل
+•  nerede  نره ده
+•  zaman زمان
+•  hangi هانگي / خانغي
+•  için ايچون / ايچين
+•  gibi گبي
+•  kadar قدر
+•  çok چوق
+•  çoğu چوغي
+   az آز
+•  daha داها
+•  en ان
+•  bile بيله
+•  sadece ساده جه
+•  ama اما
+•  çünkü چونكه
+•  ya يه
+•  hem هم
+•  her هر
+•  hiç هيچ
+•  bazı بعض
+•  bütün بتون / بوتون
+•  aynı عين
+•  diğer ديگر
+•  sonra صوڭره
+•  önce أوڭجه
+•  şimdi شيمدي
+•  zaten ذاتًا
+•  yine ينه
+•  hemen همن / همان
+•  artık آرتيق 
+•  hâlâ حالا
+•  lütfen لطفًا
+•  evet اوت
+•  hayır خير
+•  tamam تمام
+•  ki كه
+•  diye ديه
+
+•  kendi كندي
+•  şey شئ
+•  var وار
+•  yok يوق
+•  değil دگل
+•  olmak اولمق
+•  etmek ايتمك
+•  yapmak ياپمق
+•  demek ديمك
+•  söylenilmek سويله نيلمك
+Söyleniş سويلنيش
+Söylenme سويلنمه
+Söylenmek سويلنمك
+Söylenti سويلنتي
+
+•  gitmek گيتمك
+•  gelmek گلمك
+•  görmek گورمك
+•  vermek ويرمك
+•  almak آلمق
+•  istemek ايسته مك
+•  bilmek بيلمك
+•  sevmek سومك
+•  çalışmak چاليشمق
+•  konuşmak قونوشمق
+•  yemek يمك 
+•  içmek ايچمك
+•  kullanmak قوللانمق
+•  başlamak باشلامق
+•  bitmek بيتمك
+•  bitirmek بيتيرمك
+•  bakmak باقمق
+•  bulmak بولمق
+•  kalmak قالمق
+•  çıkmak چيقمق
+•  girmek گيرمك
+•  yaşamak ياشامق
+•  anlamak آڭلامق
+•  duymak دويمق
+•  beklemek بكله مك
+•  doğru  طوغری
+•  yanlış ياڭليش
+•  iyi ايي
+•  kötü كوتو
+•  büyük بويوك / بيوك
+•  küçük كوچك
+•  yeni يڭي
+•  eski اسكي
+•  güzel گوزل
+•  uzun اوزون
+•  kısa قيصه
+
+bugün بوگون
+Bugünkü بوگونكي
+yarın يارين
+
+dün دون
+Dünkü دونكي
+biraz براز
+
+henüz هنوز
+
+bazen بعضًا
+
+genel گنل
+
+özellikle أوزللكله
+
+yaklaşık bilgi ياقلاشيق بيلگي
+
+mutlaka مطلقا
+
+belki بلكه
+
+kesinlikle كسينلكله
+
+tekrar تكرار
+
+fakat فقط
+
+ancak آنجق
+
+yoksa آنجق
+
+oysa اويسه
+
+hatta حتا (حتي)
+
+üstelik أوسته لك
+
+yani يانع
+
+sanki صانكه
+
+herkes هركس
+
+kimse كيمسه
+
+biri بري
+
+başkası باشقه سي
+
+karşı قارشي / قارشو
+
+göre گوره
+
+hakkında حقنده
+
+Şehirler arası شهرلر آراسي
+
+Kural dışı قورال طيشي
+
+içinde ايچنده
+
+üst أوست
+
+alt آلت
+
+ön أوڭ
+
+arka آرقه
+
+yan يان / ‏ياڭ
+
+iç ايچ
+
+dış طيش
+
+içeri ايچري
+
+dışarı طيشاري
+
+aşağı آشاغي
+
+yukarı يوقاري
+
+ileri ايلري
+
+geri گري
+
+iki ايكي
+
+üç أوچ
+
+dört işlem درت ايشلم
+
+beş بش
+
+altı آلتي
+
+yedi یدی
+
+sekiz سكز 
+
+dokuz طقوز
+
+on اون
+
+yirmi يگرمي
+
+otuz اوتوز
+
+kırk قرق
+
+elli اللي
+
+yüz يوز
+
+bin بيڭ
+
+insan انسان
+
+kişi كيشي
+
+arkadaş آرقداش
+
+aile عائله
+
+çocuk aklı چوجق عقلي
  
+kadın قادين
+
+erkek demir اركك دمير
+
+ev او
+
+oda اوطه
+
+yer ير
+
+şehir شهر
+
+ülke أولكه
+
+mahalle محله
+
+sokak kapısı صوقاق قاپيسي
+
+Sıska صیسقه
+
+بهار ده قشى قشىنده بهارى اوزلر انسان
+Baharda kışı, kışın da baharı özler insan.
+
+اغاچ ياش ايكن اكلير
+Ağaç yaş iken eğilir.
+
+طاشى صيقسه صويونى چیقارر
+Taşı sıksa suyunu çıkarır.
+
+قىشدن صوكره بهار اولور
+Kıştan sonra bahar olur.
+
+مال جانك يونغه سىدر
+Mal canın yongasıdır.
+
+
+
+بكا	baña
+سكا	saña
+اوكا	oña
+بوكا	buña
+شوكا	şuña
+Ayrıca daha eski metinlerde o zamiri şu şekilde çekimlenebilir.
+
+اول	ol
+آنك	anıñ
+آنی	anı
+آكا	aña
+آنده	anda
+آندن	andan
+آكلامغی	añlamağı	كورمه‌كه	görmeğe
+-ma
+-ma/me mastar ekinin yazımı ise genel olarak tutarsızdır.
+
+مه، ما	-ma, -me
+Bu ekin ما şeklinde Elif ile yazılması, daha çok yeni yazımlarda görülür. Eski yazılarda sabit bir şekilde مه diye yazılır.
+
+آكلامه‌	añlama	كورمه‌	görmesi
+Bazı yazılarda izafe eklerinden önce He düşer, veya kalınsa ك (nef) harfinden önce Elif'e dönüşür.
+
+آكلاماك	añlamañ	كورمسی	görmesi
+-ış
+-ış/iş/uş/üş ekinin yazımı da aynı şekilde tutarsızdır.
+
+ش­، یش، وش	-ış, -iş, -uş, -üş
+Bu ekin و (vav) ile وش şeklinde yazılması, sadece yeni yazılarda görülür. Eski yazılarda da ی (Ye)'nin yazılıp yazılmaması tutarsızdır.
+
+آكلایش	anlayış	كورش	görüş
+كوریش	görüş
+كوروش	görüş
+-ım
+Edilgen mastar eki -ım/im/um/üm eki ise و (vav) ve ی (ye) arasında geçiş yapar. Bu ek günümüz Türkçesindeki kadar sık kullanılmaz.
+
+یم، وم	-ım, -im, -um, -üm
+آلیم	alım	طوروم	durum
+Olumsuzluk Eki
+Olumsuzluk eki istisnai olarak ünlü uyumuna göre elif ve he arasında geçiş yapar.
+
+ما	-ma-
+مه‌	-me-
+آڭلامامق	añlamamak	گورمه‌مك	görmemek
+
+
+Geniş Zaman (Muzâri)
+Geniş zaman eki; vav, ye ve elif arasında geçiş yapan istisnai bir ektir.
+
+ر	-r, -er
+ار	-ar
+یر	-ır, -ir
+رو	-ur, -ür
+Bu ekin çok farklı versiyonları olabildiği için bilmek, gitmek ve yapmak fiilleri de örnek olarak çekimlenecektir.
+
+آكلارم	كورورم	بیلیرم	كدرم	یاپارم
+آكلارسین	كورورسین	بیلیرسین	كدرسین	یاپارسین
+آكلار	كورور	بیلیر	كدر	یاپار
+آكلارز	كورورز	بیلیرز	كدرز	یاپارز
+آكلارسكز	كورورسكز	بیلیرسكز	كدرسكز	یاپارسكز
+آكلارلر	كورورلر	بیلیرلر	كدرلر	یاپارلر
+Geniş zamanın olumsuz versiyonu, günümüz Türkçesinde olduğu gibi düzensizdir.
+
+Tablo yapım aşamasındadır
+
+Geçmiş Zaman (Mazi-yi Şühûdî)
+دم	-dım	دق، دك	-dık, -dik
+دك	-dıñ	دیكز	-dıñız
+دی	-dı	دیلر	-dılar
+Dal harfi, sert ünsüzlerden sonra yumuşamaz. Bu sebeple, örnekte görmek ve bakmak fiilleri kullanılmıştır.
+
+كوردم	باقدم
+كوردك	باقدك
+كوردی	باقدی
+كوردك	باقدق
+كوردیكز	باقدیكز
+كوردیلر	باقدیلر
+Dolaylı Geçmiş Zaman (Mazi-yi Naklî)
+مش	-mış
+Örnek eklenecektir
+
+Gelecek Zaman (Müstakbel)
+ه‌جق	-acak	ه‌جك	-ecek
+یه‌جق	-yacak	یه‌جك	-yecek
+
+
