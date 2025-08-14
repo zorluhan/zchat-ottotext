@@ -19,12 +19,12 @@ targets:
       - path: Sources/APIKey.swift
     settings:
       base:
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: PrimaryIcon
         PRODUCT_BUNDLE_IDENTIFIER: com.example.zchatottotext
         INFOPLIST_FILE: Info.plist
     resources:
       - path: Resources/ottoman.txt
-      - path: Resources/Assets.xcassets
+      - path: Resources/Media.xcassets
     info:
       path: Info.plist
       properties:
